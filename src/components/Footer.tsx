@@ -1,4 +1,4 @@
-import { Sparkles, Instagram, Youtube, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 
 const quickLinks = [
   { label: 'Home', href: '#home' },
@@ -17,7 +17,10 @@ const serviceLinks = [
   'Brand Design',
 ];
 
-const socials = [Instagram, Youtube, Linkedin, Twitter];
+const socials = [
+  { Icon: Instagram, href: 'https://www.instagram.com/thecreativeclove', label: 'Instagram' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/creativeclove', label: 'LinkedIn' },
+];
 
 export function Footer() {
   const handleNav = (href: string) =>
@@ -45,11 +48,13 @@ export function Footer() {
               online through design, content, and data-driven campaigns.
             </p>
             <div className="mt-6 flex gap-3">
-              {socials.map((Icon, i) => (
+              {socials.map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
-                  aria-label="Social link"
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white/70 transition-colors hover:bg-brand-gradient hover:text-white"
                 >
                   <Icon className="h-4 w-4" />
