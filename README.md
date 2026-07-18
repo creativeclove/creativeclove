@@ -8,7 +8,6 @@ Website for CreativeClove — a creative & performance marketing agency based in
 - Vite 5
 - Tailwind CSS 3
 - Framer Motion
-- Supabase (auth)
 
 ## Getting Started
 
@@ -17,16 +16,16 @@ npm install
 npm run dev
 ```
 
-## Environment Variables
+No environment variables required.
 
-Create a `.env` file in the project root:
+## Deployment
 
-```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
+Deployable to any static host. Vite builds to `dist/`.
 
-Without these, the app runs normally but the `/admin` route will have auth disabled.
+| Setting | Value |
+|---|---|
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
 
 ## Scripts
 
