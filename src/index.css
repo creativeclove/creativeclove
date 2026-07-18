@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  ───────────────────────────────────────────────────────────
+  THEME TOKENS — edit these to rebrand the whole site.
+  Values are space-separated RGB channels (e.g. `175 202 5`)
+  so Tailwind opacity modifiers like bg-brand-500/20 keep working.
+
+  PALETTE:
+    brand-50 … brand-900  — single brand ramp (lime/olive green).
+                            50 = lightest, 900 = darkest.
+                            500 = primary (most used), 600 = buttons,
+                            500 = glows/borders, etc.
+    ink                    — near-black text
+    ink-soft               — body text
+    mist                   — light background
+
+  No secondary/tertiary palette yet — everything is shades of `brand`.
+  To change the whole site's color, swap the --brand-* values below.
+  ───────────────────────────────────────────────────────────
+*/
+:root {
+  --brand-50: 247 251 223;   /* lightest */
+  --brand-100: 238 247 191;
+  --brand-200: 220 239 128;
+  --brand-300: 201 231 74;
+  --brand-400: 184 217 35;
+  --brand-500: 175 202 5;   /* primary — most used */
+  --brand-600: 140 184 0;
+  --brand-700: 107 140 0;
+  --brand-800: 74 95 0;
+  --brand-900: 44 58 0;     /* darkest */
+
+  --ink: 17 17 17;          /* near-black text */
+  --ink-soft: 51 51 51;     /* body text */
+  --mist: 247 247 247;      /* light background */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: rgb(var(--ink-soft));
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgb(var(--brand-500) / 0.25);
+    color: rgb(var(--ink));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+  }
+
+  .glass-dark {
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(var(--brand-500)) 0%, rgb(var(--brand-600)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--mist));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--brand-500));
+  border-radius: 8px;
+  border: 2px solid rgb(var(--mist));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--brand-600));
+}
